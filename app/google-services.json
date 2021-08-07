@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "541131891339",
+    "project_id": "pst-ta5-g12",
+    "storage_bucket": "pst-ta5-g12.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:541131891339:android:0aedbbceb4487440ad6a8e",
+        "android_client_info": {
+          "package_name": "com.example.pst_ta5_g12"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "541131891339-i6bn4kjnpd16k919meeiomedup0vo93t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3mgKmaPxWD3hiUmDhbR3jeEmtvr1oz40"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "541131891339-i6bn4kjnpd16k919meeiomedup0vo93t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
