@@ -11,7 +11,8 @@
         android:theme="@style/Theme.PST_TA5_G12">
         <activity
             android:name=".IniciarSesion"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/SplashThema">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
