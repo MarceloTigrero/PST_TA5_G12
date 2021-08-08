@@ -1,80 +1,93 @@
 package com.example.pst_ta5_g12.usuarios;
 
 public class InicioSesion {
-    private String nombre;
-    private String apellido;
-    private String correo;
-    private String celular;
-    private String favorito;
-    private String usuario;
-    private String contrasenia;
+    private String Nombre;
+    private String Apellido;
+    private String Correo;
+    private String Celular;
+    private String Favorito;
+    private String Usuario;
+    private String Contrasena;
 
     public InicioSesion() {
     }
 
-    public InicioSesion(String nombre, String apellido, String correo, String celular, String favorito, String usuario, String contrasenia) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.correo = correo;
-        this.celular = celular;
-        this.favorito = favorito;
-        this.usuario = usuario;
-        this.contrasenia = contrasenia;
+    public InicioSesion(String nombre, String apellido, String correo, String celular, String favorito, String usuario, String Contrasena) {
+        this.Nombre = nombre;
+        this.Apellido = apellido;
+        this.Correo = correo;
+        this.Celular = celular;
+        this.Favorito = favorito;
+        this.Usuario = usuario;
+        this.Contrasena = Contrasena;
     }
 
     public String getNombre() {
-        return nombre;
+        return Nombre;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.Nombre = nombre;
     }
 
     public String getApellido() {
-        return apellido;
+        return Apellido;
     }
 
     public void setApellido(String apellido) {
-        this.apellido = apellido;
+        this.Apellido = apellido;
     }
 
     public String getCorreo() {
-        return correo;
+        return Correo;
     }
 
     public void setCorreo(String correo) {
-        this.correo = correo;
+        this.Correo = correo;
     }
 
     public String getCelular() {
-        return celular;
+        return Celular;
     }
 
     public void setCelular(String celular) {
-        this.celular = celular;
+        this.Celular = celular;
     }
 
     public String getFavorito() {
-        return favorito;
+        return Favorito;
     }
 
     public void setFavorito(String favorito) {
-        this.favorito = favorito;
+        this.Favorito = favorito;
     }
 
     public String getUsuario() {
-        return usuario;
+        return Usuario;
     }
 
     public void setUsuario(String usuario) {
-        this.usuario = usuario;
+        this.Usuario = usuario;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
+    public String getContrasena() {
+        return Contrasena;
     }
 
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
+    public void setContrasena(String contrasena) {
+        this.Contrasena = contrasena;
+    }
+
+    @Override
+    public String toString() {
+        return "InicioSesion{" +
+                "nombre='" + Nombre + '\'' +
+                ", apellido='" + Apellido + '\'' +
+                ", correo='" + Correo + '\'' +
+                ", celular='" + Celular + '\'' +
+                ", favorito='" + Favorito + '\'' +
+                ", usuario='" + Usuario + '\'' +
+                ", contrasenia='" + Contrasena + '\'' +
+                '}';
     }
 }

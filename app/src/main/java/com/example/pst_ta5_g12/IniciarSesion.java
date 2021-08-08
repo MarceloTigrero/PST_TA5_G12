@@ -76,10 +76,10 @@ public class IniciarSesion extends AppCompatActivity {
                                 if (!task.isSuccessful()) {
                                     Log.e("firebase", "Error getting data", task.getException());
                                 } else {
-                                    //Log.e("Final", String.valueOf(task.getResult().getValue()));
+                                    Log.e("Final", String.valueOf(task.getResult().getValue()));
                                     InicioSesion inicio = ds.getValue(InicioSesion.class);
-                                    //Log.e("Final2", String.valueOf(inicio));
-                                    usua.put(inicio.getUsuario(), inicio.getContrasenia());
+                                    Log.e("Final2", String.valueOf(inicio));
+                                    usua.put(inicio.getUsuario(), inicio.getContrasena());
                                     Nombre.put(inicio.getUsuario(), inicio.getNombre());
                                     Apellido.put(inicio.getUsuario(), inicio.getApellido());
                                     if (usua.size() < ids.size()) {
