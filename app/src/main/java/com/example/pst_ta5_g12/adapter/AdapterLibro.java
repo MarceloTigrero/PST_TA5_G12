@@ -18,8 +18,9 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class AdapterLibro extends RecyclerView.Adapter<AdapterLibro.viewholderlibro> implements View.OnClickListener {
-    private View.OnClickListener listener;
+
     List<Libro> libroList;
+    private View.OnClickListener listener;
     public AdapterLibro(List<Libro> libroList){
         this.libroList=libroList;
     }
@@ -29,6 +30,7 @@ public class AdapterLibro extends RecyclerView.Adapter<AdapterLibro.viewholderli
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_libros,parent,false);
         viewholderlibro holder = new viewholderlibro(v);
         v.setOnClickListener(this);
+
         return holder;
     }
 
