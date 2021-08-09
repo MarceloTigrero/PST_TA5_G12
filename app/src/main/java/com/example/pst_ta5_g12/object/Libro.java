@@ -1,17 +1,26 @@
 package com.example.pst_ta5_g12.object;
 
 public class Libro {
-    private String Autor, Descripcion, Editorial, Imagen, Genero;
+    private String Name,Autor, Descripcion, Editorial, Imagen, Genero;
 
     public Libro(){
     }
 
-    public Libro(String autor, String descripcion, String editorial, String imagen, String genero) {
+    public Libro(String name,String autor, String descripcion, String editorial, String imagen, String genero) {
+        this.Name = name;
         this.Autor = autor;
         this.Descripcion = descripcion;
         this.Editorial = editorial;
         this.Imagen = imagen;
         this.Genero = genero;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        this.Name = name;
     }
 
     public String getAutor() {
