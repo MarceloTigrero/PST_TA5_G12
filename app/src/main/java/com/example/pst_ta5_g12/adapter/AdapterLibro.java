@@ -2,7 +2,6 @@ package com.example.pst_ta5_g12.adapter;
 
 
         import android.net.Uri;
-        import android.os.Build;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
@@ -10,7 +9,6 @@ package com.example.pst_ta5_g12.adapter;
         import android.widget.TextView;
 
         import androidx.annotation.NonNull;
-        import androidx.annotation.RequiresApi;
         import androidx.recyclerview.widget.RecyclerView;
 
         import com.example.pst_ta5_g12.R;
@@ -34,7 +32,7 @@ public class AdapterLibro extends RecyclerView.Adapter<AdapterLibro.viewholderli
     @Override
     public void onBindViewHolder(@NonNull viewholderlibro holder, int position) {
         Libro lb=libroList.get(position);
-        holder.tvname.setText(lb.getName());
+        holder.tvname.setText(lb.getNombre());
         holder.tvautor.setText(lb.getAutor());
         holder.tveditorial.setText(lb.getEditorial());
         holder.imag.setImageURI(Uri.parse(lb.getImagen()));

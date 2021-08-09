@@ -68,7 +68,7 @@ public class HomeFragment extends Fragment {
                 RecyclerView rv = binding.rv;
                 SearchView searchView = binding.search;
                 //searchView = root.findViewById(R.id.search);
-                LinearLayoutManager lm= new LinearLayoutManager(getContext());
+                LinearLayoutManager lm= new LinearLayoutManager(getActivity());
                 list = new ArrayList<>();
                 AdapterLibro adapter = new AdapterLibro(list);
                 rv.setAdapter(adapter);
@@ -79,9 +79,10 @@ public class HomeFragment extends Fragment {
                         if(snapshot.exists()){
                             for(DataSnapshot snapshot1:snapshot.getChildren()){
                                 Libro ms = snapshot1.getValue(Libro.class);
-                                Log.d("myTag", ""+ms+"");
+                                Log.e("myTag", ""+ms+"");
                                 list.add(ms);
                             }
+                            adapter.notifyDataSetChanged();
                         }
                     }
                     @Override

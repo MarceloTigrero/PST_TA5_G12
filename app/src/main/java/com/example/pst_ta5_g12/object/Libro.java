@@ -1,13 +1,13 @@
 package com.example.pst_ta5_g12.object;
 
 public class Libro {
-    private String Name,Autor, Descripcion, Editorial, Imagen, Genero;
+    private String Nombre,Autor, Descripcion, Editorial, Imagen, Genero;
 
     public Libro(){
     }
 
     public Libro(String name,String autor, String descripcion, String editorial, String imagen, String genero) {
-        this.Name = name;
+        this.Nombre = name;
         this.Autor = autor;
         this.Descripcion = descripcion;
         this.Editorial = editorial;
@@ -15,12 +15,12 @@ public class Libro {
         this.Genero = genero;
     }
 
-    public String getName() {
-        return Name;
+    public String getNombre() {
+        return Nombre;
     }
 
-    public void setName(String name) {
-        this.Name = name;
+    public void setNombre(String nombre) {
+        this.Nombre = nombre;
     }
 
     public String getAutor() {
@@ -61,5 +61,17 @@ public class Libro {
 
     public void setGenero(String genero) {
         this.Genero = genero;
+    }
+
+    @Override
+    public String toString() {
+        return "Libro{" +
+                "Name='" + Nombre + '\'' +
+                ", Autor='" + Autor + '\'' +
+                ", Descripcion='" + Descripcion + '\'' +
+                ", Editorial='" + Editorial + '\'' +
+                ", Imagen='" + Imagen + '\'' +
+                ", Genero='" + Genero + '\'' +
+                '}';
     }
 }
