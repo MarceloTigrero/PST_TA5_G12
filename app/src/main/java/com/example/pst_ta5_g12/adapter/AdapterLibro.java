@@ -2,23 +2,23 @@ package com.example.pst_ta5_g12.adapter;
 
 
 import android.net.Uri;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.ImageView;
-        import android.widget.TextView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-        import androidx.annotation.NonNull;
-        import androidx.recyclerview.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
-        import com.example.pst_ta5_g12.R;
-        import com.example.pst_ta5_g12.object.Libro;
+import com.example.pst_ta5_g12.R;
+import com.example.pst_ta5_g12.object.Libro;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class AdapterLibro extends RecyclerView.Adapter<AdapterLibro.viewholderlibro> implements View.OnClickListener {
-
+    private View.OnClickListener listener;
     List<Libro> libroList;
     public AdapterLibro(List<Libro> libroList){
         this.libroList=libroList;
@@ -28,6 +28,7 @@ public class AdapterLibro extends RecyclerView.Adapter<AdapterLibro.viewholderli
     public viewholderlibro onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_libros,parent,false);
         viewholderlibro holder = new viewholderlibro(v);
+        v.setOnClickListener(this);
         return holder;
     }
 
@@ -47,10 +48,14 @@ public class AdapterLibro extends RecyclerView.Adapter<AdapterLibro.viewholderli
     public int getItemCount() {
         return libroList.size();
     }
-
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener=listener;
+    }
     @Override
     public void onClick(View v) {
-
+        if (listener!=null){
+            listener.onClick(v);
+        }
     }
 
     public class viewholderlibro extends RecyclerView.ViewHolder {

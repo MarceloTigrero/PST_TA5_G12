@@ -1,30 +1,31 @@
 package com.example.pst_ta5_g12.ui.home;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
-        import android.util.Log;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-        import androidx.annotation.NonNull;
-        import androidx.annotation.Nullable;
-        import androidx.appcompat.widget.SearchView;
-        import androidx.fragment.app.Fragment;
-        import androidx.lifecycle.Observer;
-        import androidx.lifecycle.ViewModelProvider;
-        import androidx.recyclerview.widget.LinearLayoutManager;
-        import androidx.recyclerview.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-        import com.example.pst_ta5_g12.adapter.AdapterLibro;
-        import com.example.pst_ta5_g12.databinding.FragmentHomeBinding;
-        import com.example.pst_ta5_g12.object.Libro;
-        import com.google.firebase.database.DataSnapshot;
-        import com.google.firebase.database.DatabaseError;
-        import com.google.firebase.database.DatabaseReference;
-        import com.google.firebase.database.FirebaseDatabase;
-        import com.google.firebase.database.ValueEventListener;
+import com.example.pst_ta5_g12.adapter.AdapterLibro;
+import com.example.pst_ta5_g12.databinding.FragmentHomeBinding;
+import com.example.pst_ta5_g12.object.Libro;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-        import java.util.ArrayList;
+import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
@@ -45,7 +46,7 @@ public class HomeFragment extends Fragment {
         AdapterLibro adapterLibro = new AdapterLibro(mylist);
         rv.setAdapter(adapterLibro);
     }
-    
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
@@ -66,6 +67,17 @@ public class HomeFragment extends Fragment {
                 rv.setLayoutManager(lm);
                 list = new ArrayList<>();
                 AdapterLibro adapter = new AdapterLibro(list);
+                adapter.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AlertDialog.Builder alerta;
+                        alerta = new AlertDialog.Builder(HomeFragment.this.getContext());
+                        alerta.setMessage("Descripcion:");
+                        AlertDialog titulo = alerta.create();
+                        titulo.setTitle("Descripcion");
+                        titulo.show();
+                    }
+                });
                 rv.setAdapter(adapter);
 
                 ref.addValueEventListener(new ValueEventListener() {
