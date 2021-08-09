@@ -37,12 +37,9 @@ public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
 
-    DatabaseReference ref;
     ArrayList<Libro> list;
-    RecyclerView rv;
-    SearchView searchView;
-    AdapterLibro adapter;
-    LinearLayoutManager lm;
+    ;
+    ;
 
     private void buscar(String s) {
         ArrayList<Libro> mylist= new ArrayList<>();
@@ -52,51 +49,56 @@ public class HomeFragment extends Fragment {
             }
         }
     }
+    private void ejec(){
+
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        ref= FirebaseDatabase.getInstance().getReference().child("Libros");
-       // rv = root.findViewById(R.id.rv);
-        rv = binding.rv;
-        searchView = binding.search;
-        //searchView = root.findViewById(R.id.search);
-        lm = new LinearLayoutManager(root.getContext());
-        rv.setAdapter(adapter);
-
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    for(DataSnapshot snapshot1:snapshot.getChildren()){
-                        Libro ms = snapshot1.getValue(Libro.class);
-                        Log.d("myTag", ""+ms+"");
-                        list.add(ms);
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-            @Override
-            public boolean onQueryTextChange(String s) {
-                buscar(s);
-                return true;
-            }
-        });
-        final TextView textView = binding.texthome;
+        //final TextView textView = binding.texthome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+
+                //textView.setText(s);
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Libros");
+                RecyclerView rv = binding.rv;
+                SearchView searchView = binding.search;
+                //searchView = root.findViewById(R.id.search);
+                LinearLayoutManager lm= new LinearLayoutManager(getContext());
+                list = new ArrayList<>();
+                AdapterLibro adapter = new AdapterLibro(list);
+                rv.setAdapter(adapter);
+
+                ref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()){
+                            for(DataSnapshot snapshot1:snapshot.getChildren()){
+                                Libro ms = snapshot1.getValue(Libro.class);
+                                Log.d("myTag", ""+ms+"");
+                                list.add(ms);
+                            }
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
+                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        return false;
+                    }
+                    @Override
+                    public boolean onQueryTextChange(String s) {
+                        buscar(s);
+                        return true;
+                    }
+                });
             }
         });
         return root;

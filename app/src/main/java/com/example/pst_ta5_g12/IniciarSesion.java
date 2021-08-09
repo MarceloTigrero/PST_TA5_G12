@@ -57,8 +57,8 @@ public class IniciarSesion extends AppCompatActivity {
             public void onClick(View v) {
                 usu = Usuario.getText().toString().trim();
                 con = Contrasena.getText().toString().trim();
-                Libro();
-                //iniciarSesion1(usu);
+                //Libro();
+                iniciarSesion1(usu);
             }
         });
     }
