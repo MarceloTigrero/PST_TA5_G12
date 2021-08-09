@@ -1,7 +1,7 @@
 package com.example.pst_ta5_g12.adapter;
 
 
-        import android.net.Uri;
+import android.net.Uri;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
@@ -18,7 +18,7 @@ package com.example.pst_ta5_g12.adapter;
 public class AdapterLibro extends RecyclerView.Adapter<AdapterLibro.viewholderlibro> {
 
     List<Libro> libroList;
-    public AdapterLibro(List<Libro> peliculaList){
+    public AdapterLibro(List<Libro> libroList){
         this.libroList=libroList;
     }
     @NonNull

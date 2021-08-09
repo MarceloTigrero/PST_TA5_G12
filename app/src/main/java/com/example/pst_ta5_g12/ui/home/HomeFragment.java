@@ -5,8 +5,7 @@ package com.example.pst_ta5_g12.ui.home;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
-        import android.widget.LinearLayout;
-        import android.widget.TextView;
+
         import androidx.annotation.NonNull;
         import androidx.annotation.Nullable;
         import androidx.appcompat.widget.SearchView;
@@ -16,21 +15,16 @@ package com.example.pst_ta5_g12.ui.home;
         import androidx.recyclerview.widget.LinearLayoutManager;
         import androidx.recyclerview.widget.RecyclerView;
 
-        import com.example.pst_ta5_g12.R;
         import com.example.pst_ta5_g12.adapter.AdapterLibro;
-        import com.example.pst_ta5_g12.adapter.adapterPelicula;
         import com.example.pst_ta5_g12.databinding.FragmentHomeBinding;
         import com.example.pst_ta5_g12.object.Libro;
-        import com.example.pst_ta5_g12.object.Pelicula;
         import com.google.firebase.database.DataSnapshot;
         import com.google.firebase.database.DatabaseError;
         import com.google.firebase.database.DatabaseReference;
         import com.google.firebase.database.FirebaseDatabase;
         import com.google.firebase.database.ValueEventListener;
 
-        import java.sql.DatabaseMetaData;
         import java.util.ArrayList;
-        import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
@@ -69,6 +63,7 @@ public class HomeFragment extends Fragment {
                 SearchView searchView = binding.search;
                 //searchView = root.findViewById(R.id.search);
                 LinearLayoutManager lm= new LinearLayoutManager(getActivity());
+                rv.setLayoutManager(lm);
                 list = new ArrayList<>();
                 AdapterLibro adapter = new AdapterLibro(list);
                 rv.setAdapter(adapter);

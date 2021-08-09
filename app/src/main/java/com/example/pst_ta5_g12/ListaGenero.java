@@ -3,14 +3,11 @@ package com.example.pst_ta5_g12;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.example.pst_ta5_g12.object.Libro;
-import com.example.pst_ta5_g12.object.Pelicula;
-import com.example.pst_ta5_g12.usuarios.InicioSesion;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
