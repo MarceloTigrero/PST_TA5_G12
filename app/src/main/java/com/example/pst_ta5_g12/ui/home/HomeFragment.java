@@ -1,6 +1,6 @@
 package com.example.pst_ta5_g12.ui.home;
 
-        import android.os.Bundle;
+import android.os.Bundle;
         import android.util.Log;
         import android.view.LayoutInflater;
         import android.view.View;
@@ -32,20 +32,20 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
 
     ArrayList<Libro> list;
-    ;
-    ;
+    RecyclerView rv;
+
 
     private void buscar(String s) {
         ArrayList<Libro> mylist= new ArrayList<>();
         for(Libro obj:list){
-            if(obj.getAutor().toLowerCase().contains(s.toLowerCase())){
+            if(obj.getNombre().toLowerCase().contains(s.toLowerCase())){
                 mylist.add(obj);
             }
         }
+        AdapterLibro adapterLibro = new AdapterLibro(mylist);
+        rv.setAdapter(adapterLibro);
     }
-    private void ejec(){
-
-    }
+    
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
@@ -59,7 +59,7 @@ public class HomeFragment extends Fragment {
 
                 //textView.setText(s);
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Libros");
-                RecyclerView rv = binding.rv;
+                rv = binding.rv;
                 SearchView searchView = binding.search;
                 //searchView = root.findViewById(R.id.search);
                 LinearLayoutManager lm= new LinearLayoutManager(getActivity());
