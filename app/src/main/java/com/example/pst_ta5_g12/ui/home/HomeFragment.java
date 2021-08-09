@@ -74,6 +74,7 @@ public class HomeFragment extends Fragment {
                         if(snapshot.exists()){
                             for(DataSnapshot snapshot1:snapshot.getChildren()){
                                 Libro ms = snapshot1.getValue(Libro.class);
+
                                 Log.e("myTag", ""+ms+"");
                                 list.add(ms);
                             }

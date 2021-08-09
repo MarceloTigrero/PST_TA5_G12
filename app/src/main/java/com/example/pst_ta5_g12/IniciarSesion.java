@@ -51,7 +51,6 @@ public class IniciarSesion extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
         sp = getSharedPreferences("sesion", Context.MODE_PRIVATE);
-
         Ingresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -13,7 +13,9 @@ import android.net.Uri;
 
         import com.example.pst_ta5_g12.R;
         import com.example.pst_ta5_g12.object.Libro;
-        import java.util.List;
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 public class AdapterLibro extends RecyclerView.Adapter<AdapterLibro.viewholderlibro> {
 
@@ -35,7 +37,10 @@ public class AdapterLibro extends RecyclerView.Adapter<AdapterLibro.viewholderli
         holder.tvname.setText(lb.getNombre());
         holder.tvautor.setText(lb.getAutor());
         holder.tveditorial.setText(lb.getEditorial());
-        holder.imag.setImageURI(Uri.parse(lb.getImagen()));
+        Picasso.get()
+                .load(lb.getImagen())
+                .placeholder(R.mipmap.ic_book)
+                .into(holder.imag);
     }
 
     @Override
@@ -53,6 +58,7 @@ public class AdapterLibro extends RecyclerView.Adapter<AdapterLibro.viewholderli
             tvautor = itemView.findViewById(R.id.tvautor);
             tveditorial = itemView.findViewById(R.id.tveditorial);
             imag = itemView.findViewById(R.id.imagelibro);
+
         }
     }
 }
