@@ -23,7 +23,7 @@ public class adapterPelicula extends RecyclerView.Adapter<adapterPelicula.viewho
     @NonNull
     @Override
     public viewholderpelicula onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_home,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_peliculas,parent,false);
         viewholderpelicula holder = new viewholderpelicula(v);
         return holder;
     }
