@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PST_TA5_G12">
         <activity
+            android:name=".ListaGenero"
+            android:exported="true" />
+        <activity
             android:name=".IniciarSesion"
             android:exported="true"
             android:theme="@style/SplashThema">
@@ -23,8 +26,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name">
-        </activity>
+            android:label="@string/app_name"></activity>
     </application>
 
 </manifest>
