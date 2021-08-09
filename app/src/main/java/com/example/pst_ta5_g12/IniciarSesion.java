@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.pst_ta5_g12.object.Libro;
 import com.example.pst_ta5_g12.usuarios.InicioSesion;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,6 +21,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,7 +57,8 @@ public class IniciarSesion extends AppCompatActivity {
             public void onClick(View v) {
                 usu = Usuario.getText().toString().trim();
                 con = Contrasena.getText().toString().trim();
-                iniciarSesion1(usu);
+                Libro();
+                //iniciarSesion1(usu);
             }
         });
     }
@@ -129,6 +132,55 @@ public class IniciarSesion extends AppCompatActivity {
                                                 finish();
                                             }
                                         }
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+
+            }
+        });
+    }
+    private void Libro() {
+        ArrayList<String> nomlibros = new ArrayList<>();
+        Map<String, String> caracLibros = new HashMap<>();
+        Map<String, Map<String, String>> Libros = new HashMap<>();
+        Map<String, String> ids = new HashMap<>();
+        databaseReference.child("Libros").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    //Log.e("firebase", "Error getting data", task.getException());
+                    Toast.makeText(IniciarSesion.this, "Error Data", Toast.LENGTH_LONG).show();
+                } else {
+                    Log.e("firebase", String.valueOf(task.getResult().getChildren()));
+                    for (final DataSnapshot ds : task.getResult().getChildren()) {
+                        Log.e("Re", "" + ds);
+                        ids.put(ds.getKey(), ds.getKey());
+                        databaseReference.child("Libros").child(ds.getKey()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                if (!task.isSuccessful()) {
+                                    Log.e("firebase", "Error getting data", task.getException());
+                                } else {
+                                    nomlibros.add(task.getResult().getKey());
+
+                                    //Log.e("Final", String.valueOf(task.getResult().getValue()));
+                                    Libro inicio = ds.getValue(Libro.class);
+                                    //Log.e("Final2", String.valueOf(inicio));
+                                    caracLibros.put("autor", inicio.getAutor());
+                                    caracLibros.put("descripcion", inicio.getDescripcion());
+                                    caracLibros.put("editorial", inicio.getEditorial());
+                                    caracLibros.put("genero", inicio.getGenero());
+                                    caracLibros.put("imagen", inicio.getImagen());
+                                    Libros.put(task.getResult().getKey(),caracLibros);
+                                    if (nomlibros.size() < ids.size()) {
+                                        Log.e("Menor", "menor");
+                                    } else {
+                                        Log.e("salida",nomlibros+"" );
+                                        Log.e("salida2",caracLibros+"" );
+                                        Log.e("salida3",Libros+"" );
                                     }
                                 }
                             }

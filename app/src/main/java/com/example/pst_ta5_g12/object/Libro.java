@@ -1,40 +1,56 @@
 package com.example.pst_ta5_g12.object;
 
 public class Libro {
-    private String autor,descripcion,editorial,imagen;
+    private String Autor, Descripcion, Editorial, Imagen, Genero;
 
     public Libro(){
     }
-    public Libro(String autor,String descripcion,String editorial,String imagen){
-        this.autor=autor;
-        this.descripcion=descripcion;
-        this.editorial=editorial;
-        this.imagen=imagen;
+
+    public Libro(String autor, String descripcion, String editorial, String imagen, String genero) {
+        this.Autor = autor;
+        this.Descripcion = descripcion;
+        this.Editorial = editorial;
+        this.Imagen = imagen;
+        this.Genero = genero;
     }
-    //getter
-    public String getAutor(){
-        return autor;
+
+    public String getAutor() {
+        return Autor;
     }
-    public String getDescripcion(){
-        return descripcion;
+
+    public void setAutor(String autor) {
+        this.Autor = autor;
     }
-    public String getEditorial(){
-        return editorial;
+
+    public String getDescripcion() {
+        return Descripcion;
     }
-    public String getImagen(){
-        return imagen;
+
+    public void setDescripcion(String descripcion) {
+        this.Descripcion = descripcion;
     }
-    //setter
-    public void setAutort(String autor){
-        this.autor=autor;
+
+    public String getEditorial() {
+        return Editorial;
     }
-    public void setDescripcion(String descripcion){
-        this.descripcion=descripcion;
+
+    public void setEditorial(String editorial) {
+        this.Editorial = editorial;
     }
-    public void setEditorial(String editorial){
-        this.editorial=editorial;
+
+    public String getImagen() {
+        return Imagen;
     }
-    public void setImagen(String imagen){
-        this.imagen=imagen;
+
+    public void setImagen(String imagen) {
+        this.Imagen = imagen;
+    }
+
+    public String getGenero() {
+        return Genero;
+    }
+
+    public void setGenero(String genero) {
+        this.Genero = genero;
     }
 }
