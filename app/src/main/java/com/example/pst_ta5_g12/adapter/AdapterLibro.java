@@ -17,7 +17,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class AdapterLibro extends RecyclerView.Adapter<AdapterLibro.viewholderlibro> {
+public class AdapterLibro extends RecyclerView.Adapter<AdapterLibro.viewholderlibro> implements View.OnClickListener {
 
     List<Libro> libroList;
     public AdapterLibro(List<Libro> libroList){
@@ -46,6 +46,11 @@ public class AdapterLibro extends RecyclerView.Adapter<AdapterLibro.viewholderli
     @Override
     public int getItemCount() {
         return libroList.size();
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 
     public class viewholderlibro extends RecyclerView.ViewHolder {
