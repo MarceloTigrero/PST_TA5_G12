@@ -36,13 +36,13 @@ public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
+
     DatabaseReference ref;
     ArrayList<Libro> list;
     RecyclerView rv;
     SearchView searchView;
     AdapterLibro adapter;
     LinearLayoutManager lm;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,9 +76,7 @@ public class HomeFragment extends Fragment {
                 buscar(s);
                 return true;
             }
-
         });
-
     }
 
 
@@ -96,11 +94,11 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
+        //final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+                //textView.setText(s);
             }
         });
         return root;
