@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.pst_ta5_g12.R;
 import com.example.pst_ta5_g12.adapter.AdapterLibro;
 import com.example.pst_ta5_g12.databinding.FragmentHomeBinding;
 import com.example.pst_ta5_g12.object.Libro;
@@ -24,6 +27,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -34,6 +38,9 @@ public class HomeFragment extends Fragment {
 
     ArrayList<Libro> list;
     RecyclerView rv;
+    String imagene;
+    String nombree;
+    String descripcione;
 
 
     private void buscar(String s) {
@@ -61,6 +68,7 @@ public class HomeFragment extends Fragment {
                 //textView.setText(s);
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Libros");
                 rv = binding.rv;
+
                 SearchView searchView = binding.search;
                 //searchView = root.findViewById(R.id.search);
                 LinearLayoutManager lm= new LinearLayoutManager(getActivity());
@@ -70,12 +78,27 @@ public class HomeFragment extends Fragment {
                 adapter.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        AlertDialog.Builder alerta;
-                        alerta = new AlertDialog.Builder(HomeFragment.this.getContext());
-                        alerta.setMessage("Descripcion:");
-                        AlertDialog titulo = alerta.create();
-                        titulo.setTitle("Descripcion");
-                        titulo.show();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(v.getRootView().getContext());
+                        View dialView = LayoutInflater.from(v.getRootView().getContext()).inflate(R.layout.dialogo,null);
+                        ImageView imagen;
+                        TextView nombre;
+                        TextView descripcion;
+
+
+                        imagen = (ImageView) dialView.findViewById(R.id.idImagen);
+                        nombre = (TextView) dialView.findViewById(R.id.idNombreE);
+                        descripcion = (TextView) dialView.findViewById(R.id.idDescripcionE);
+
+                        imagene = list.get(rv.getChildAdapterPosition(v)).getImagen();
+                        nombree = list.get(rv.getChildAdapterPosition(v)).getNombre();
+                        descripcione = list.get(rv.getChildAdapterPosition(v)).getDescripcion();
+                        Picasso.get().load(imagene).into(imagen);
+                        nombre.setText(nombree);
+                        descripcion.setText(descripcione);
+                        builder.setView(dialView);
+                        builder.setCancelable(true);
+                        builder.show();
+
                     }
                 });
                 rv.setAdapter(adapter);
@@ -86,11 +109,14 @@ public class HomeFragment extends Fragment {
                         if(snapshot.exists()){
                             for(DataSnapshot snapshot1:snapshot.getChildren()){
                                 Libro ms = snapshot1.getValue(Libro.class);
-
+                                imagene = ms.getImagen();
+                                nombree = ms.getNombre();
+                                descripcione = ms.getDescripcion();
                                 Log.e("myTag", ""+ms+"");
                                 list.add(ms);
                             }
                             adapter.notifyDataSetChanged();
+
                         }
                     }
                     @Override
