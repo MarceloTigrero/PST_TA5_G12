@@ -43,41 +43,41 @@ public class HomeFragment extends Fragment {
     SearchView searchView;
     AdapterLibro adapter;
     LinearLayoutManager lm;
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_home);
-        ref= FirebaseDatabase.getInstance().getReference().child("Libros");
-        rv = findViewById(R.id.rv);
-        searchView = findViewById(R.id.search);
-        lm = new LinearLayoutManager(this);
-        rv.setAdapter(adapter);
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    for(DataSnapshot snapshot1:snapshot.getChildren()){
-                        Libro ms = snapshot1.getValue(Libro.class);
-                        list.add(ms);
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-            @Override
-            public boolean onQueryTextChange(String s) {
-                buscar(s);
-                return true;
-            }
-        });
-    }
+//    @Override
+////    public void onCreate(Bundle savedInstanceState) {
+////        super.onCreate(savedInstanceState);
+//////        setContentView(R.layout.fragment_home);
+//////        ref= FirebaseDatabase.getInstance().getReference().child("Libros");
+//////        rv = findViewById(R.id.rv);
+//////        searchView = findViewById(R.id.search);
+////        //lm = new LinearLayoutManager(this);
+////        rv.setAdapter(adapter);
+////        ref.addValueEventListener(new ValueEventListener() {
+////            @Override
+////            public void onDataChange(@NonNull DataSnapshot snapshot) {
+////                if(snapshot.exists()){
+////                    for(DataSnapshot snapshot1:snapshot.getChildren()){
+////                        Libro ms = snapshot1.getValue(Libro.class);
+////                        list.add(ms);
+////                    }
+////                }
+////            }
+////            @Override
+////            public void onCancelled(@NonNull DatabaseError error) {
+////            }
+////        });
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                return false;
+//            }
+//            @Override
+//            public boolean onQueryTextChange(String s) {
+//                buscar(s);
+//                return true;
+//            }
+//        });
+//    }
 
 
     private void buscar(String s) {
