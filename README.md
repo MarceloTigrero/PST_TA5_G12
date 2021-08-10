@@ -6,4 +6,5 @@ Integrantes :
 **Alex Rosero
 **Marcelo Tigrero
 
-direccion del apk : 
+# direccion del apk 
+   :app\build\outputs\apk\release 
